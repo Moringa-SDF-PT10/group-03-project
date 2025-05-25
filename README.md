@@ -1,1 +1,1 @@
-# group-03-project
+# Group 3 Project - Next Chapter
