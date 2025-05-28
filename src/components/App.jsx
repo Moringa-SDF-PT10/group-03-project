@@ -1,7 +1,11 @@
+import Books from "./Books";
 
 function App() {
-
-  return 
+  return (
+    <div className="main">
+      <Books />
+    </div>
+  )
 }
 
-export default App
+export default App;

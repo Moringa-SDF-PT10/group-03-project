@@ -1,0 +1,67 @@
+import { useState } from "react";
+import BookCard from "./BookCard";
+import styles from "../assets/css/Books.module.css";
+
+function Books() {
+  const [search, setSearch] = useState("");
+
+  const [booksData, setBooksData] = useState([]);
+
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyCZEf1vbCqGhX9n7sNtNdiZwBS3ZoMddVU&maxResults=40`
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error. Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setBooksData(data.items);
+      console.log(data.items);
+    } catch (error) {
+      console.error(`Fetch error: ${error}`);
+    }
+  };
+
+  return (
+    <div className={styles["book-list"]}>
+      <form className={styles.search} onSubmit={handleSubmit}>
+        <input type='text' value={search} onChange={handleChange} />
+        <button type='submit'>Search</button>
+      </form>
+      <div className={styles.books}>
+        {booksData.map((book) => {
+          let thumbnail =
+            book.volumeInfo.imageLinks &&
+            book.volumeInfo.imageLinks.smallThumbnail;
+          let title = book.volumeInfo && book.volumeInfo.title;
+          let subtitle = book.volumeInfo && book.volumeInfo.subtitle;
+          let authors = book.volumeInfo && book.volumeInfo.authors;
+          let year = book.volumeInfo && book.volumeInfo.publishedDate;
+          let publisher = book.volumeInfo && book.volumeInfo.publisher;
+          if (thumbnail != undefined)
+            return (
+              <BookCard
+                key={book.id}
+                image={thumbnail}
+                title={title}
+                authors={authors}
+                year={year}
+                publisher = {publisher}
+                subtitle={subtitle}
+              />
+            );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default Books;

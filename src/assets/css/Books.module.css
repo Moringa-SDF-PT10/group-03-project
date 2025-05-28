@@ -1,0 +1,22 @@
+.book-list {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #6F4E37;
+    padding: 40px 20px 20px 20px;
+    overflow-x: auto;
+}
+
+.search {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: 5;
+}
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 70vh;
+}
