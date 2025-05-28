@@ -3,20 +3,68 @@
     min-height: 100vh;
     width: 100vw;
     background-color: #6F4E37;
-    padding: 40px 20px 20px 20px;
+    padding-bottom: 40px;
     overflow-x: auto;
+}
+
+.background {
+    background-image: url('src/assets/images/books-background.jpeg');
+    background-size: cover;
+    height: 80vh;
+    width: 100vw;
+    opacity: 0.4;
 }
 
 .search {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 40vh;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
     z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search input {
+    width: 25vw;
+    height: 30px;
+    text-align: center;
+    color: #1a120de0;
+    text-shadow: 0 0 5px white;
+    border: none;
+    border-bottom: 2px solid black;
+    background: none;
+    font-size: 18px;
+}
+
+.search input:focus {
+    outline: none;
+}
+
+.search input::placeholder {
+    color: black;
+    opacity: 0.8;
+    text-shadow: 0 0 5px white;
+}
+
+.search button {
+    border-radius: 8px;
+    height: 30px;
+    width: 18vw;
+    border: none;
+    background: #D2B48C;
 }
 
 .books {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    margin-top: 70vh;
+    margin: 20px;
 }
+

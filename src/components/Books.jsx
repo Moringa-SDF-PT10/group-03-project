@@ -33,9 +33,15 @@ function Books() {
   return (
     <div className={styles["book-list"]}>
       <form className={styles.search} onSubmit={handleSubmit}>
-        <input type='text' value={search} onChange={handleChange} />
-        <button type='submit'>Search</button>
+        <input
+          placeholder='Search for a book...'
+          type='text'
+          value={search}
+          onChange={handleChange}
+        />
+        {/* <button type='submit'>Search</button> */}
       </form>
+      <div className={styles.background}></div>
       <div className={styles.books}>
         {booksData.map((book) => {
           let thumbnail =
@@ -46,6 +52,7 @@ function Books() {
           let authors = book.volumeInfo && book.volumeInfo.authors;
           let year = book.volumeInfo && book.volumeInfo.publishedDate;
           let publisher = book.volumeInfo && book.volumeInfo.publisher;
+          // let description = book.volumeInfo && book.volumeInfo.description;
           if (thumbnail != undefined)
             return (
               <BookCard
@@ -54,8 +61,9 @@ function Books() {
                 title={title}
                 authors={authors}
                 year={year}
-                publisher = {publisher}
+                publisher={publisher}
                 subtitle={subtitle}
+                // description={description}
               />
             );
         })}

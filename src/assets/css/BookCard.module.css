@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
     gap: 5px;
     padding: 5px;
@@ -13,12 +13,12 @@
     box-shadow: 5px 5px 10px black;
     background-color: #D2B48C;
     border-radius: 8px;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
     text-align: center;
 }
 
 .book-card:hover {
-    transform: scale(0.9);
+    transform: scale(0.95);
 }
 
 .book-card img {
