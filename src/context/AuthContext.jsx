@@ -1,11 +1,9 @@
-// src/context/AuthContext.jsx (Add signup function)
 import React, { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
 const dummyUsers = [
   { id: 1, name: "Chadwin", email: "chadwin@example.com", password: "1234" },
-  // Add more dummy users if needed
 ];
 
 export const AuthProvider = ({ children }) => {
