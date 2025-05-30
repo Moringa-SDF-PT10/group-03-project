@@ -1,14 +1,14 @@
-// src/pages/Login.jsx
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
-  const { login, register } = useContext(AuthContext);
+  const { login, signup } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isRegistering, setIsRegistering] = useState(false);
 
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -17,6 +17,11 @@ const Login = () => {
 
   const validate = () => {
     const newErrors = {};
+
+    if (isRegistering && !formData.name) {
+      newErrors.name = "Name is required";
+    }
+
     if (!formData.email) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -38,7 +43,7 @@ const Login = () => {
     if (!validate()) return;
 
     if (isRegistering) {
-      const success = register(formData.email, formData.password);
+      const success = signup(formData.name, formData.email, formData.password);
       if (success) navigate("/profile");
       else alert("User already exists");
     } else {
@@ -57,6 +62,20 @@ const Login = () => {
     <div className="login-form">
       <h2>{isRegistering ? "Sign Up" : "Login"}</h2>
       <form onSubmit={handleSubmit} noValidate>
+        {isRegistering && (
+          <div>
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            {errors.name && <span className="error">{errors.name}</span>}
+          </div>
+        )}
+
         <div>
           <label>Email:</label>
           <input
@@ -68,6 +87,7 @@ const Login = () => {
           />
           {errors.email && <span className="error">{errors.email}</span>}
         </div>
+
         <div>
           <label>Password:</label>
           <input
@@ -79,8 +99,10 @@ const Login = () => {
           />
           {errors.password && <span className="error">{errors.password}</span>}
         </div>
+
         <button type="submit">{isRegistering ? "Sign Up" : "Login"}</button>
       </form>
+
       <p>
         {isRegistering ? "Already have an account?" : "Don't have an account?"}{" "}
         <button onClick={() => setIsRegistering(!isRegistering)}>
