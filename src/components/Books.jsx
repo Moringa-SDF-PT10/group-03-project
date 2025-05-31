@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useLibrary } from "./LibraryContext";
 import BookCard from "./BookCard";
 import styles from "../assets/css/Books.module.css";
 
 function Books() {
-  const [search, setSearch] = useState("");
-
-  const [booksData, setBooksData] = useState([]);
+   const { search, setSearch, booksData, setBooksData } = useLibrary();
 
   const handleChange = (event) => {
     setSearch(event.target.value);
