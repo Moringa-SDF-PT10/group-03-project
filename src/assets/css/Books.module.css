@@ -13,6 +13,7 @@
     height: 80vh;
     width: 100vw;
     opacity: 0.4;
+    border-bottom: 3px solid black;
 }
 
 .search {
@@ -58,7 +59,8 @@
     height: 30px;
     width: 18vw;
     border: none;
-    background: #D2B48C;
+    background: #d2b48c44;
+    text-shadow: 0 0 5px white;
 }
 
 .books {

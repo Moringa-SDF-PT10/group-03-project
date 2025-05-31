@@ -1,5 +1,7 @@
 import { useLibrary } from "./LibraryContext";
 import BookCard from "./BookCard";
+import { NotebookPen } from 'lucide-react'
+import styles from '../assets/css/MyLibrary.module.css'
 
 function MyLibrary() {
   const { favorites, readingList } = useLibrary();
@@ -7,7 +9,7 @@ function MyLibrary() {
   return (
     <div>
       <h2>Favorites</h2>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
+      <div className={styles['bookshelf-items']}>
         {favorites.length === 0 && <p>No favorites yet.</p>}
         {favorites.map((book) => (
           <BookCard 
@@ -22,8 +24,8 @@ function MyLibrary() {
         ))}
         </div>
       <h2>Reading List</h2>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-        {readingList.length === 0 && <p>No favorites yet.</p>}
+      <div className={styles['bookshelf-items']}>
+        {readingList.length === 0 && <p>No books on your reading list. To add a book to your reading list, click on the <NotebookPen color="#6F4E37" size={12.5} /> icon.</p>}
         {readingList.map((book) => (
           <BookCard 
           key={book.id}

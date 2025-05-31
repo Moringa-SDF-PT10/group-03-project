@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookCard from "./BookCard";
 import styles from "../assets/css/Books.module.css";
 
@@ -6,6 +6,29 @@ function Books() {
   const [search, setSearch] = useState("");
 
   const [booksData, setBooksData] = useState([]);
+
+  useEffect(  () => {
+    const fetcher = async() => {
+
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/books/v1/volumes?q=react&key=AIzaSyCZEf1vbCqGhX9n7sNtNdiZwBS3ZoMddVU&maxResults=7`
+        );
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error. Status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        setBooksData(data.items);
+        console.log(data.items);
+      } catch (error) {
+        console.error(`Fetch error: ${error}`);
+      }
+    }
+    fetcher();
+  }, []
+  )
 
   const handleChange = (event) => {
     setSearch(event.target.value);
@@ -39,7 +62,7 @@ function Books() {
           value={search}
           onChange={handleChange}
         />
-        {/* <button type='submit'>Search</button> */}
+        <button type='submit'>Search</button>
       </form>
       <div className={styles.background}></div>
       <div className={styles.books}>
