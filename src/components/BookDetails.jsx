@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import styles from "../assets/css/BookDetails.module.css"; 
 
 function BookDetails() {
   const { id } = useParams();
@@ -23,21 +24,31 @@ function BookDetails() {
   if (!book) return <p>Loading...</p>;
 
   return (
-    <div style={{ padding: "20px" }}>
+  <div className={styles["book-details-container"]}>
+    <h1>Book Details</h1>
+    <div className={styles["book-details-content"]}>
       {book.imageLinks?.thumbnail && (
-        <img src={book.imageLinks.thumbnail} alt={book.title} />
+        <img
+          className={styles["book-image"]}
+          src={book.imageLinks.thumbnail}
+          alt={book.title}
+        />
       )}
-      <h2>{book.title}</h2>
-      <h4>{book.subtitle}</h4>
-      <p><strong>Authors:</strong> {book.authors?.join(", ")}</p>
-      <p><strong>Publisher:</strong> {book.publisher}</p>
-      <p><strong>Published Date:</strong> {book.publishedDate}</p>
-      <p><strong>Category:</strong> {book.categories ? book.categories.join(", ") : "Unknown"}</p>
-      <p><strong>Language:</strong> {book.language ? book.language.toUpperCase() : "Unknown"}</p>
-      <p><strong>Average Rating:</strong> {book.averageRating ? `${book.averageRating} / 5` : "No rating"}</p>
-      <p><strong>Description:</strong> {book.description || "No description"}</p>      
+      <div className={styles["book-info"]}>
+        <h2>{book.title}</h2>
+        <h4>{book.subtitle}</h4>
+        <p><strong>Authors:</strong> {book.authors?.join(", ")}</p>
+        <p><strong>Publisher:</strong> {book.publisher}</p>
+        <p><strong>Published Date:</strong> {book.publishedDate}</p>
+        <p><strong>Category:</strong> {book.categories ? book.categories.join(", ") : "Unknown"}</p>
+        <p><strong>Language:</strong> {book.language ? book.language.toUpperCase() : "Unknown"}</p>
+        <p><strong>Average Rating:</strong> {book.averageRating ? `${book.averageRating} / 5` : "No rating"}</p>
+        <p><strong>Description:</strong> {book.description || "No description"}</p>
+      </div>
     </div>
-  );
+  </div>
+);
+
 }
 
 export default BookDetails;
