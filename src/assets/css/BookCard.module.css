@@ -50,3 +50,11 @@
     justify-content: center;
     text-align: center;
 }
+
+.icons {
+    transition: 0.2s;
+    cursor: pointer;
+
+}
+
+

@@ -57,6 +57,7 @@ function Books() {
             return (
               <BookCard
                 key={book.id}
+                id={book.id}
                 image={thumbnail}
                 title={title}
                 authors={authors}
