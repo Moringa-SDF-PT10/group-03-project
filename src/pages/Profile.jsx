@@ -1,7 +1,6 @@
-// src/pages/Profile.jsx
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Profile = () => {
   const { user, updateUser, updatePassword, logout, deleteAccount } = useAuth();
@@ -81,7 +80,7 @@ const Profile = () => {
               className="profile-avatar"
             />
             <label className="avatar-edit">
-              <FiCamera />
+              📷
               <input 
                 type="file" 
                 accept="image/*"
@@ -99,22 +98,22 @@ const Profile = () => {
             className={`nav-item ${activeSection === 'profile' ? 'active' : ''}`}
             onClick={() => setActiveSection('profile')}
           >
-            <FiUser /> Profile Settings
+            👤 Profile Settings
           </button>
           <button 
             className={`nav-item ${activeSection === 'password' ? 'active' : ''}`}
             onClick={() => setActiveSection('password')}
           >
-            <FiLock /> Change Password
+            🔒 Change Password
           </button>
           <button className="nav-item logout" onClick={logout}>
-            <FiLogOut /> Log Out
+            🚪 Log Out
           </button>
           <button 
             className="nav-item danger" 
             onClick={() => setShowDeleteModal(true)}
           >
-            <FiTrash2 /> Delete Account
+            🗑️ Delete Account
           </button>
         </nav>
       </div>
@@ -130,7 +129,7 @@ const Profile = () => {
 
           {activeSection === 'profile' ? (
             <form onSubmit={handleProfileUpdate} className="profile-form">
-              <h2><FiUser /> Profile Information</h2>
+              <h2>👤 Profile Information</h2>
               
               <div className="form-group">
                 <label>Full Name</label>
@@ -156,12 +155,12 @@ const Profile = () => {
               </div>
 
               <button type="submit" className="btn-primary">
-                <FiCheck /> Save Changes
+                ✔️ Save Changes
               </button>
             </form>
           ) : (
             <form onSubmit={handlePasswordChange} className="password-form">
-              <h2><FiLock /> Change Password</h2>
+              <h2>🔒 Change Password</h2>
               
               <div className="form-group">
                 <label>Current Password</label>
@@ -197,7 +196,7 @@ const Profile = () => {
               </div>
 
               <button type="submit" className="btn-primary">
-                <FiCheck /> Update Password
+                ✔️ Update Password
               </button>
             </form>
           )}
@@ -208,7 +207,7 @@ const Profile = () => {
       {showDeleteModal && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <h3><FiTrash2 /> Delete Account</h3>
+            <h3>🗑️ Delete Account</h3>
             <p>Are you sure you want to permanently delete your account? This action cannot be undone.</p>
             
             <div className="modal-actions">
@@ -219,7 +218,7 @@ const Profile = () => {
                   navigate('/');
                 }}
               >
-                <FiTrash2 /> Delete My Account
+                🗑️ Delete My Account
               </button>
               <button 
                 className="btn-secondary"
