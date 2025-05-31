@@ -1,127 +1,235 @@
+// src/pages/Profile.jsx
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const { user, updateUser, logout } = useContext(AuthContext);
+  const { user, updateUser, updatePassword, logout, deleteAccount } = useAuth();
   const navigate = useNavigate();
-  const [editMode, setEditMode] = useState(false);
-  const [formData, setFormData] = useState({
-    name: user?.name || "",
-    bio: user?.bio || "",
-    image: user?.image || "",
+  
+  const [profileData, setProfileData] = useState({
+    name: user?.name || '',
+    email: user?.email || '',
+    profileImage: user?.profileImage || ''
   });
+  
+  const [passwordData, setPasswordData] = useState({
+    current: '',
+    new: '',
+    confirm: ''
+  });
+  
+  const [activeSection, setActiveSection] = useState('profile');
+  const [message, setMessage] = useState({ text: '', type: '' });
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [imagePreview, setImagePreview] = useState(user?.profileImage || '');
 
-  const [errors, setErrors] = useState({});
-  const [originalData, setOriginalData] = useState({});
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  useEffect(() => {
-    if (!user) navigate("/login");
-    setOriginalData({
-      name: user?.name || "",
-      bio: user?.bio || "",
-      image: user?.image || "",
-    });
-  }, [user, navigate]);
+    if (file.size > 2 * 1024 * 1024) {
+      setMessage({ text: 'Image must be less than 2MB', type: 'error' });
+      return;
+    }
 
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (formData.image && !/^https?:\/\/.*\.(jpg|jpeg|png|gif)$/i.test(formData.image))
-      newErrors.image = "Image URL must be a valid image link";
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImagePreview(reader.result);
+      setProfileData({...profileData, profileImage: reader.result});
+    };
+    reader.readAsDataURL(file);
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
+  const handleProfileUpdate = (e) => {
+    e.preventDefault();
+    updateUser(profileData);
+    setMessage({ text: 'Profile updated successfully!', type: 'success' });
   };
 
-  const handleSave = () => {
-    if (!validate()) return;
-    updateUser(formData);
-    setOriginalData(formData);
-    setEditMode(false);
-  };
+  const handlePasswordChange = (e) => {
+    e.preventDefault();
+    
+    if (passwordData.new !== passwordData.confirm) {
+      setMessage({ text: "Passwords don't match", type: 'error' });
+      return;
+    }
 
-  const handleReset = () => {
-    setFormData(originalData);
-    setErrors({});
+    if (passwordData.new.length < 6) {
+      setMessage({ text: "Password must be at least 6 characters", type: 'error' });
+      return;
+    }
+
+    const success = updatePassword(passwordData.current, passwordData.new);
+    if (success) {
+      setMessage({ text: "Password updated successfully!", type: 'success' });
+      setPasswordData({ current: '', new: '', confirm: '' });
+    } else {
+      setMessage({ text: "Current password is incorrect", type: 'error' });
+    }
   };
 
   return (
     <div className="profile-container">
-      <h2>My Profile</h2>
-      {user ? (
-        <div className="profile-card">
-          <img
-            src={formData.image || "https://via.placeholder.com/150"}
-            alt="Profile"
-            width={150}
-            height={150}
-          />
-          <div>
-            <label>Name:</label>
-            {editMode ? (
-              <>
-                <input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                />
-                {errors.name && <p className="error">{errors.name}</p>}
-              </>
-            ) : (
-              <p>{user.name}</p>
-            )}
-          </div>
-
-          <div>
-            <label>Bio:</label>
-            {editMode ? (
-              <textarea
-                name="bio"
-                value={formData.bio}
-                onChange={handleChange}
+      {/* Sidebar Navigation */}
+      <div className="profile-sidebar">
+        <div className="user-card">
+          <div className="avatar-upload">
+            <img 
+              src={imagePreview || '/default-avatar.png'} 
+              alt="Profile" 
+              className="profile-avatar"
+            />
+            <label className="avatar-edit">
+              <FiCamera />
+              <input 
+                type="file" 
+                accept="image/*"
+                onChange={handleImageUpload}
+                style={{ display: 'none' }}
               />
-            ) : (
-              <p>{user.bio}</p>
-            )}
+            </label>
           </div>
+          <h3>{user?.name || 'User'}</h3>
+          <p>{user?.email || 'user@example.com'}</p>
+        </div>
 
-          <div>
-            <label>Image URL:</label>
-            {editMode ? (
-              <>
+        <nav className="profile-nav">
+          <button 
+            className={`nav-item ${activeSection === 'profile' ? 'active' : ''}`}
+            onClick={() => setActiveSection('profile')}
+          >
+            <FiUser /> Profile Settings
+          </button>
+          <button 
+            className={`nav-item ${activeSection === 'password' ? 'active' : ''}`}
+            onClick={() => setActiveSection('password')}
+          >
+            <FiLock /> Change Password
+          </button>
+          <button className="nav-item logout" onClick={logout}>
+            <FiLogOut /> Log Out
+          </button>
+          <button 
+            className="nav-item danger" 
+            onClick={() => setShowDeleteModal(true)}
+          >
+            <FiTrash2 /> Delete Account
+          </button>
+        </nav>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="profile-content">
+        <div className="form-container">
+          {message.text && (
+            <div className={`alert alert-${message.type}`}>
+              {message.text}
+            </div>
+          )}
+
+          {activeSection === 'profile' ? (
+            <form onSubmit={handleProfileUpdate} className="profile-form">
+              <h2><FiUser /> Profile Information</h2>
+              
+              <div className="form-group">
+                <label>Full Name</label>
                 <input
-                  name="image"
-                  value={formData.image}
-                  onChange={handleChange}
+                  type="text"
+                  value={profileData.name}
+                  onChange={(e) => setProfileData({...profileData, name: e.target.value})}
+                  className="form-input"
+                  placeholder="Enter your name"
                 />
-                {errors.image && <p className="error">{errors.image}</p>}
-              </>
-            ) : (
-              <p>{user.image}</p>
-            )}
-          </div>
+              </div>
 
-          {editMode ? (
-            <>
-              <button onClick={handleSave}>Save</button>
-              <button onClick={handleReset}>Reset</button>
-              <button onClick={() => setEditMode(false)}>Cancel</button>
-            </>
+              <div className="form-group">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  value={profileData.email}
+                  onChange={(e) => setProfileData({...profileData, email: e.target.value})}
+                  className="form-input"
+                  placeholder="Enter your email"
+                  disabled
+                />
+              </div>
+
+              <button type="submit" className="btn-primary">
+                <FiCheck /> Save Changes
+              </button>
+            </form>
           ) : (
-            <>
-              <button onClick={() => setEditMode(true)}>Edit</button>
-              <button onClick={logout}>Logout</button>
-            </>
+            <form onSubmit={handlePasswordChange} className="password-form">
+              <h2><FiLock /> Change Password</h2>
+              
+              <div className="form-group">
+                <label>Current Password</label>
+                <input
+                  type="password"
+                  value={passwordData.current}
+                  onChange={(e) => setPasswordData({...passwordData, current: e.target.value})}
+                  className="form-input"
+                  placeholder="Enter current password"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>New Password</label>
+                <input
+                  type="password"
+                  value={passwordData.new}
+                  onChange={(e) => setPasswordData({...passwordData, new: e.target.value})}
+                  className="form-input"
+                  placeholder="Enter new password (min 6 characters)"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Confirm New Password</label>
+                <input
+                  type="password"
+                  value={passwordData.confirm}
+                  onChange={(e) => setPasswordData({...passwordData, confirm: e.target.value})}
+                  className="form-input"
+                  placeholder="Confirm new password"
+                />
+              </div>
+
+              <button type="submit" className="btn-primary">
+                <FiCheck /> Update Password
+              </button>
+            </form>
           )}
         </div>
-      ) : (
-        <p>Please log in to see your profile.</p>
+      </div>
+
+      {/* Delete Account Modal */}
+      {showDeleteModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3><FiTrash2 /> Delete Account</h3>
+            <p>Are you sure you want to permanently delete your account? This action cannot be undone.</p>
+            
+            <div className="modal-actions">
+              <button 
+                className="btn-danger"
+                onClick={() => {
+                  deleteAccount();
+                  navigate('/');
+                }}
+              >
+                <FiTrash2 /> Delete My Account
+              </button>
+              <button 
+                className="btn-secondary"
+                onClick={() => setShowDeleteModal(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

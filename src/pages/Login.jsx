@@ -1,116 +1,31 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
+import LoginForm from '../components/LoginForm'
 
 const Login = () => {
-  const { login, signup } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const [isRegistering, setIsRegistering] = useState(false);
+  const navigate = useNavigate()
+  const { login } = useAuth()
+  const [error, setError] = useState('')
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState({});
-
-  const validate = () => {
-    const newErrors = {};
-
-    if (isRegistering && !formData.name) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Invalid email format";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-
-    if (isRegistering) {
-      const success = signup(formData.name, formData.email, formData.password);
-      if (success) navigate("/profile");
-      else alert("User already exists");
+  const handleLogin = (email, password) => {
+    if (login(email, password)) {
+      navigate('/profile')
     } else {
-      const success = login(formData.email, formData.password);
-      if (success) navigate("/profile");
-      else alert("Invalid credentials");
+      setError('Invalid email or password')
     }
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
-  };
+  }
 
   return (
-    <div className="login-form">
-      <h2>{isRegistering ? "Sign Up" : "Login"}</h2>
-      <form onSubmit={handleSubmit} noValidate>
-        {isRegistering && (
-          <div>
-            <label>Name:</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            {errors.name && <span className="error">{errors.name}</span>}
-          </div>
-        )}
-
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          {errors.email && <span className="error">{errors.email}</span>}
-        </div>
-
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          {errors.password && <span className="error">{errors.password}</span>}
-        </div>
-
-        <button type="submit">{isRegistering ? "Sign Up" : "Login"}</button>
-      </form>
-
-      <p>
-        {isRegistering ? "Already have an account?" : "Don't have an account?"}{" "}
-        <button onClick={() => setIsRegistering(!isRegistering)}>
-          {isRegistering ? "Login here" : "Register here"}
-        </button>
+    <div className="auth-page">
+      <h1>Login</h1>
+      {error && <p className="error">{error}</p>}
+      <LoginForm onLogin={handleLogin} />
+      <p className="auth-switch">
+        Don't have an account? <a href="/signup">Sign up</a>
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
