@@ -11,14 +11,13 @@ function App() {
 
   return (
     <div className={styles['app-container']}>
-      <HomeNavbar />
       <main className={styles['main-content']}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/books" element={<Books />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<ProfilePage />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/books" element={<Books />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<ProfilePage />} />
+        </Routes>
       </main>
       <footer>
         <p>© 2025 BookWorm<span>03</span>. All rights reserved.</p>

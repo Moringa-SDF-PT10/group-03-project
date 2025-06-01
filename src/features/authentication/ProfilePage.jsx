@@ -1,8 +1,10 @@
 import styles from './ProfilePage.module.css';
+import ProfileNavbar from './ProfileNavbar.jsx';
 
 function ProfilePage() {
     return (
         <div className={styles['profile-container']}>
+            <ProfileNavbar />
             <h2 className={styles['profile-title']}>My Profile</h2>
             <div className={styles['profile-info']}>
                 {/* Avatar, name, email */}

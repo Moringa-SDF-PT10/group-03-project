@@ -1,5 +1,6 @@
 import styles from './Home.module.css';
 import { useState } from 'react';
+import HomeNavbar from './HomeNavbar';
 
 function Home() {
     const [query, setQuery] = useState('');
@@ -30,6 +31,7 @@ function Home() {
 
     return (
         <div className={styles['home-container']}>
+            <HomeNavbar />
 
             <div className={styles['search-section']}>
                 <h2>Search for Books</h2>
