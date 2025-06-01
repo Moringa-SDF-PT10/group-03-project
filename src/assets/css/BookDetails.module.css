@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;  
     padding: 30px; 
+    gap: 20px;
 }
 
 .book-details-content {
@@ -16,10 +17,20 @@
     gap: 20px;
 }
 
+.title {
+    font-weight: 900;
+    font-size: 23px;
+}
+
+.subtitle {
+    font-weight: 500;
+    font-size: 18px;
+}
+
 .book-info {
     position: relative;
     display: flex;
-    align-items: flex-start;
+    align-items: start;
     justify-content: flex-start;
     gap: 20px;
 }
@@ -27,6 +38,12 @@
 .book-image {
     max-height: 300px;
     border-radius: 8px;
+}
+
+.book-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .description {

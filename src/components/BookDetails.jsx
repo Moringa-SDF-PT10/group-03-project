@@ -37,6 +37,7 @@ function BookDetails() {
 
   return (
     <div className={styles["book-details-container"]}>
+      <span><span className={styles.title}>{book.title}:</span><span className={styles.subtitle}>{book.subtitle}</span></span>
       <div className={styles["book-details-content"]}>
         <div className={styles["book-info"]}>
           {book.imageLinks?.thumbnail && (
@@ -46,9 +47,7 @@ function BookDetails() {
               alt={book.title}
             />
           )}
-          <div>
-            <h2>{book.title}</h2>
-            <h4>{book.subtitle}</h4>
+          <div className={styles['book-meta']}>
             <p>
               <strong>Author(s): </strong> {book.authors?.join(", ")}
             </p>
