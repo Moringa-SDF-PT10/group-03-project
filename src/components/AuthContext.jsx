@@ -6,15 +6,20 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState(() => {
-    // Initialize with a test user
-    const testUser = {
-      id: 1,
-      name: "Test User",
-      email: "test@example.com",
-      password: bcrypt.hashSync("password123", 10),
-      profileImage: ""
-    };
-    return [testUser];
+    const storedUsers = localStorage.getItem('bookExplorerUsers');
+    if (storedUsers) {
+      return JSON.parse(storedUsers);
+    } else {
+      const testUser = {
+        id: 1,
+        name: "Test User",
+        email: "test@example.com",
+        password: bcrypt.hashSync("password123", 10),
+        profileImage: ""
+      };
+      localStorage.setItem('bookExplorerUsers', JSON.stringify([testUser]));
+      return [testUser];
+    }
   });
   const [loading, setLoading] = useState(true);
 
@@ -26,7 +31,12 @@ export const AuthProvider = ({ children }) => {
       if (validUser) setUser(validUser);
     }
     setLoading(false);
-  }, []);
+  }, [users]);
+
+  const syncUsersToStorage = (updatedUsers) => {
+    setUsers(updatedUsers);
+    localStorage.setItem('bookExplorerUsers', JSON.stringify(updatedUsers));
+  };
 
   const login = (email, password) => {
     const foundUser = users.find(u => u.email === email);
@@ -51,8 +61,9 @@ export const AuthProvider = ({ children }) => {
       password: bcrypt.hashSync(password, 10),
       profileImage: ""
     };
-    
-    setUsers([...users, newUser]);
+
+    const updatedUsers = [...users, newUser];
+    syncUsersToStorage(updatedUsers);
     setUser(newUser);
     localStorage.setItem('bookExplorerUser', JSON.stringify(newUser));
     return true;
@@ -64,19 +75,21 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateUser = (updatedData) => {
-    const updatedUser = { 
-      ...user, 
+    const updatedUser = {
+      ...user,
       ...updatedData,
       profileImage: updatedData.profileImage || user?.profileImage || ""
     };
     setUser(updatedUser);
-    setUsers(users.map(u => u.id === updatedUser.id ? updatedUser : u));
+
+    const updatedUsers = users.map(u => u.id === updatedUser.id ? updatedUser : u);
+    syncUsersToStorage(updatedUsers);
     localStorage.setItem('bookExplorerUser', JSON.stringify(updatedUser));
   };
 
   const updatePassword = (currentPassword, newPassword) => {
     if (!user) return false;
-    
+
     const passwordMatch = bcrypt.compareSync(currentPassword, user.password);
     if (!passwordMatch) return false;
 
@@ -84,17 +97,19 @@ export const AuthProvider = ({ children }) => {
       ...user,
       password: bcrypt.hashSync(newPassword, 10)
     };
-    
+
     setUser(updatedUser);
-    setUsers(users.map(u => u.id === updatedUser.id ? updatedUser : u));
+    const updatedUsers = users.map(u => u.id === updatedUser.id ? updatedUser : u);
+    syncUsersToStorage(updatedUsers);
     localStorage.setItem('bookExplorerUser', JSON.stringify(updatedUser));
     return true;
   };
 
   const deleteAccount = () => {
     if (!user) return false;
-    
-    setUsers(users.filter(u => u.id !== user.id));
+
+    const updatedUsers = users.filter(u => u.id !== user.id);
+    syncUsersToStorage(updatedUsers);
     localStorage.removeItem('bookExplorerUser');
     setUser(null);
     return true;
