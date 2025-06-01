@@ -6,17 +6,19 @@ import { LibraryProvider } from "./LibraryContext";
 
 function App() {
   return (
+    <LibraryProvider>
       <Router>
-        <nav className="nav">
-          <Link to="/">All Books</Link>
-          <Link to="/library">My Library</Link>
+        <nav>
+          <Link to="/">Books</Link>
+          <Link to="/mylibrary">My Library</Link>
         </nav>
-
         <Routes>
           <Route path="/" element={<Books />} />
-          <Route path="/library" element={<MyLibrary />} />
+          <Route path="/mylibrary" element={<MyLibrary />} />
         </Routes>
       </Router>
+    </LibraryProvider>
+      
     
   );
 }

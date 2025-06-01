@@ -1,4 +1,3 @@
-
 import { createContext, useContext, useState } from "react";
 
 const LibraryContext = createContext();
@@ -10,6 +9,9 @@ export function useLibrary() {
 export function LibraryProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
   const [readingList, setReadingList] = useState([]);
+
+  const [search, setSearch] = useState("");
+  const [booksData, setBooksData] = useState([]);
 
   const toggleFavorite = (book) => {
     setFavorites((prev) =>
@@ -29,7 +31,16 @@ export function LibraryProvider({ children }) {
 
   return (
     <LibraryContext.Provider
-      value={{ favorites, readingList, toggleFavorite, toggleReadingList }}
+      value={{
+        favorites,
+        readingList,
+        toggleFavorite,
+        toggleReadingList,
+        search,
+        setSearch,
+        booksData,
+        setBooksData,
+      }}
     >
       {children}
     </LibraryContext.Provider>
