@@ -69,7 +69,7 @@ function Home() {
                     <p>Explore our collection, manage your library, and connect with fellow book lovers.</p>
                 </div>
                 <div className={styles['home-image-container1']}>
-                    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=900&q=80" alt="Books" className='home-image' />
+                    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=900&q=80" alt="Books" className='home-image' />
                 </div>
             </div>
 
