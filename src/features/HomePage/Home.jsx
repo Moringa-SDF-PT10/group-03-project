@@ -1,6 +1,33 @@
 import styles from './Home.module.css';
+import { useState } from 'react';
 
 function Home() {
+    const [query, setQuery] = useState('');
+    const [books, setBooks] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    async function handleSearch(element) {
+        element.preventDefault();
+        if (!query.trim()) return ;
+        setLoading(true);
+        setError('');
+        setBooks([]);
+        try {
+            const response = await fetch(`/api/books?search=${encodeURIComponent(query)}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch books');
+            }
+            const data = await response.json();
+            setBooks(data);
+        } catch (err) {
+            setError('Could not fetch books. Please try again later.');
+        } finally {
+            setLoading(false);
+        }
+    }
+
+
     return (
         <div className={styles['home-container']}>
             <div className={styles['home-header-container']}>
@@ -13,11 +40,36 @@ function Home() {
                     <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=900&q=80" alt="Books" className='home-image' />
                 </div>
             </div>
+            <div className={styles['search-section']}>
+                <h2>Search for Books</h2>
+                <form onSubmit={handleSearch} className={styles['search-form']}>
+                    <input
+                        type="text"
+                        placeholder="Enter book title, author, or keyword..."
+                        value={query}
+                        onChange={e => setQuery(e.target.value)}
+                        className={styles['search-input']}
+                    />
+                    <button type="submit" className={styles['search-btn']}>Search</button>
+                </form>
+                {loading && <p>Loading...</p>}
+                {error && <p className={styles['error']}>{error}</p>}
+                {books.length > 0 && (
+                    <ul className={styles['search-results']}>
+                        {books.map((book) => (
+                            <li key={book.id} className={styles['book-item']}>
+                                <strong>{book.title}</strong> by {book.author}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                {(!loading && books.length === 0 && query) && <p>No books found</p> }
+            </div>
             <div className={styles['home-content']}>
                 <div className={styles['home-image-container2']}>
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=80" alt="Library" className='home-image' />
                 </div>
-                <h2>What BookWorm03 Offers</h2>
+                <h2>About BookWorm03</h2>
                 <ul>
                     <li>Extensive book collection</li>
                     <li>User-friendly library management</li>
