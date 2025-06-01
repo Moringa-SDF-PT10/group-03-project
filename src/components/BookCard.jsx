@@ -56,7 +56,7 @@ function BookCard({
           </div>
         </div>
       </Link>
-      <div>
+      <div className={styles['icons-container']}>
         <Star
           className={styles.icons}
           onClick={() => toggleFavorite(book)}

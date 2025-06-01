@@ -12,7 +12,7 @@ function Books() {
       const fetcher = async() => {      
         try {
           const response = await fetch(
-            `https://www.googleapis.com/books/v1/volumes?q=react&maxResults=8`
+            `https://www.googleapis.com/books/v1/volumes?q=react&maxResults=10`
           );
     
           if (!response.ok) {
