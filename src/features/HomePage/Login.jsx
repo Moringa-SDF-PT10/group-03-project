@@ -1,4 +1,6 @@
+import { Home } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import HomeNavbar from './HomeNavbar';
 
 function Login() {
     const navigate = useNavigate();
@@ -12,6 +14,7 @@ function Login() {
 
     return (
         <div className="login-container">
+            <HomeNavbar />
             <h2>Login</h2>
             <form onSubmit={handleLogin}>
                 <div className="form-group">
