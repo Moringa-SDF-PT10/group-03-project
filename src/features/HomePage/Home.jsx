@@ -1,20 +1,20 @@
-import React from 'react';
+import styles from './Home.module.css';
 
 function Home() {
     return (
-        <div className='home-container'>
-            <div>
-                <div className='home-header'>
+        <div className={styles['home-container']}>
+            <div className={styles['home-header-container']}>
+                <div className={styles['home-header']}>
                     <h1>Welcome to BookWorm<span>03</span></h1>
                     <p>Your one-stop destination for all things books!</p>
                     <p>Explore our collection, manage your library, and connect with fellow book lovers.</p>
                 </div>
-                <div className='home-image-container1'>
+                <div className={styles['home-image-container1']}>
                     <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=900&q=80" alt="Books" className='home-image' />
                 </div>
             </div>
-            <div>
-                <div className='home-image-container2'>
+            <div className={styles['home-content']}>
+                <div className={styles['home-image-container2']}>
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=80" alt="Library" className='home-image' />
                 </div>
                 <h2>What BookWorm03 Offers</h2>
@@ -25,7 +25,7 @@ function Home() {
                     <li>Personalized recommendations</li>
                 </ul>
             </div>
-            <div>
+            <div className={styles['features-section']}>
                 <h2>Features</h2>
                 <ul>
                     <li>Search and filter books</li>
