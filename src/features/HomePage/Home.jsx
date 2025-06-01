@@ -1,5 +1,6 @@
 import styles from './Home.module.css';
 import { useState } from 'react';
+import { useLibrary } from '../../context/LibraryContext.jsx';
 
 function Home() {
     const [query, setQuery] = useState('');
