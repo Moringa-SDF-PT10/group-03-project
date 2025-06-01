@@ -1,6 +1,5 @@
 import styles from './Home.module.css';
 import { useState } from 'react';
-import { useLibrary } from '../../context/LibraryContext.jsx';
 
 function Home() {
     const [query, setQuery] = useState('');
@@ -15,12 +14,12 @@ function Home() {
         setError('');
         setBooks([]);
         try {
-            const response = await fetch(`/api/books?search=${encodeURIComponent(query)}`);
+            const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=40`);
             if (!response.ok) {
                 throw new Error('Failed to fetch books');
             }
             const data = await response.json();
-            setBooks(data);
+            setBooks(data.items || []);
         } catch (err) {
             setError('Could not fetch books. Please try again later.');
         } finally {
@@ -59,7 +58,10 @@ function Home() {
                     <ul className={styles['search-results']}>
                         {books.map((book) => (
                             <li key={book.id} className={styles['book-item']}>
-                                <strong>{book.title}</strong> by {book.author}
+                                <strong>{book.volumeInfo.title}</strong> 
+                                {book.volumeInfo.authors && (
+                                    <> by {book.volumeInfo.authors.join(', ')}</>
+                                )}
                             </li>
                         ))}
                     </ul>
