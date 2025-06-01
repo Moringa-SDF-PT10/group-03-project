@@ -3,6 +3,7 @@ import Home from './features/HomePage/Home.jsx';
 import Books from './features/HomePage/Books.jsx';
 import Login from './features/HomePage/Login';
 import styles from './App.module.css'
+import ProfilePage from './features/authentication/ProfilePage.jsx';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/books" element={<Books />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
       </main>
       <footer>
