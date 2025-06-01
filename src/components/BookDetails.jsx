@@ -37,7 +37,12 @@ function BookDetails() {
 
   return (
     <div className={styles["book-details-container"]}>
-      <span><span className={styles.title}>{book.title}:</span><span className={styles.subtitle}>{book.subtitle}</span></span>
+      <div className={styles["title-container"]}>
+        <span className={styles.title}>{book.title}{book.subtitle && <span>:</span>}</span>
+        {book.subtitle && (
+          <span className={styles.subtitle}>{book.subtitle}</span>
+        )}
+      </div>
       <div className={styles["book-details-content"]}>
         <div className={styles["book-info"]}>
           {book.imageLinks?.thumbnail && (
@@ -47,7 +52,7 @@ function BookDetails() {
               alt={book.title}
             />
           )}
-          <div className={styles['book-meta']}>
+          <div className={styles["book-meta"]}>
             <p>
               <strong>Author(s): </strong> {book.authors?.join(", ")}
             </p>
@@ -59,14 +64,14 @@ function BookDetails() {
             </p>
             <p>
               <strong>Average Rating: </strong>
-              {book.averageRating ? `${book.averageRating} / 5` : "No rating"}
+              {book.averageRating ? `${book.averageRating} / 5` : "N/A"}
             </p>
           </div>
         </div>
         <div className={styles.description}>
           {removeHtmlTags(book.description).map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
-          )) || "No description"}
+          )) || ""}
         </div>
       </div>
     </div>
