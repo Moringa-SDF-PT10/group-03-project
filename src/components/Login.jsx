@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleLogin = (email, password) => {
     if (login(email, password)) {
-      navigate('/profile')
+      navigate('/books')
     } else {
       setError('Invalid email or password')
     }

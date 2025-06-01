@@ -12,6 +12,8 @@ function HomeNavbar() {
                 <Link to="/">Home</Link>
                 <Link to="/books">Books</Link>
                 <Link to="/login">Login</Link>
+                <Link to="/profile">Profile</Link>
+                <Link to="/my-library">My Library</Link>
             </div>
       </nav>
     )
