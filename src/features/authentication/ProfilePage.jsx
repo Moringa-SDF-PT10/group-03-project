@@ -11,20 +11,16 @@ function ProfilePage() {
             </div>
             <button>Edit Profile</button>
             <section>
-                <h3>Currently Reading</h3>
-                {/* List of books */}
+                <h3>My Library</h3>
+                {/* <MyLibrary /> */}
             </section>
             <section>
                 <h3>Favorites</h3>
-                {/* List of favorite books */}
+                {/* <Favorites /> */}
             </section>
             <section>
-                <h3>Reading History</h3>
-                {/* List of previously read books */}
-            </section>
-            <section>
-                <h3>My Reviews</h3>
-                {/* List of reviews */}
+                <h3>Reading List</h3>
+                {/* <ReadingList /> */}
             </section>
         </div>
     )
