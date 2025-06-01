@@ -1,5 +1,5 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import styles from "./ProfileNavbar.module.css";
+import styles from "../assets/css/ProfileNavbar.module.css";
 import { use } from "react";
 
 function ProfileNavbar() {
@@ -13,10 +13,7 @@ function ProfileNavbar() {
         <nav className={styles.navbar}>
             <div className={styles.logo}>
                 <h1>👤 My Profile</h1>
-            </div>
-            <div>
-                <button onClick={handleLogout} className={styles.logoutBtn}>Logout</button>
-            </div>
+            </div>            
         </nav>
     );
 }

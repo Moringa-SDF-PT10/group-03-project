@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from './AuthContext'
 import LoginForm from './LoginForm'
+import HomeNavbar from './HomeNavbar'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -18,6 +19,7 @@ const Login = () => {
 
   return (
     <div className="auth-page">
+        <HomeNavbar />
       <h1>Login</h1>
       {error && <p className="error">{error}</p>}
       <LoginForm onLogin={handleLogin} />
