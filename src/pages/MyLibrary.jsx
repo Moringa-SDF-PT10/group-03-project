@@ -1,4 +1,3 @@
-// src/pages/MyLibrary.jsx
 import React from 'react';
 
 const MyLibrary = () => {
