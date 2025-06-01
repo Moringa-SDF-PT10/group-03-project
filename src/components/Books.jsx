@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useLibrary } from "./LibraryContext";
 import BookCard from "./BookCard";
 import styles from "../assets/css/Books.module.css";
+import { Home } from "lucide-react";
+import HomeNavbar from "./HomeNavbar";
 
 function Books() {
    const { search, setSearch, booksData, setBooksData } = useLibrary();
@@ -56,6 +58,7 @@ function Books() {
 
   return (
     <div className={styles["book-list"]}>
+      <div><HomeNavbar /></div>
       <form className={styles.search} onSubmit={handleSubmit}>
         <input
           placeholder='Search for a book...'
