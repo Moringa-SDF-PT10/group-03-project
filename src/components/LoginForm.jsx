@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import styles from '../assets/css/Login.module.css'
+
 
 const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
@@ -10,7 +12,9 @@ const LoginForm = ({ onLogin }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form 
+    className={styles["login-form"]}
+    onSubmit={handleSubmit}>
       <input
         type="email"
         value={email}
