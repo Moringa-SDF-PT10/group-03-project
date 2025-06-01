@@ -1,4 +1,3 @@
-// src/pages/ReadingList.jsx
 import React from 'react';
 
 const ReadingList = () => {
