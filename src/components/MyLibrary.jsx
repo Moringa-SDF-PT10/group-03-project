@@ -1,13 +1,22 @@
+import { useState } from "react";
 import { useLibrary } from "./LibraryContext";
 import BookCard from "./BookCard";
+<<<<<<< HEAD
 import { NotebookPen } from 'lucide-react'
 import styles from '../assets/css/MyLibrary.module.css'
+=======
+import styles from "../assets/css/MyLibrary.module.css"; 
+>>>>>>> d32d9eac2e547a3c92649ba15a571621e24f6ef3
 
 function MyLibrary() {
   const { favorites, readingList } = useLibrary();
 
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [showReadingList, setShowReadingList] = useState(false);
+
   return (
     <div>
+<<<<<<< HEAD
       <h2>Favorites</h2>
       <div className={styles['bookshelf-items']}>
         {favorites.length === 0 && <p>No favorites yet.</p>}
@@ -37,7 +46,48 @@ function MyLibrary() {
           year={book.year}
           publisher={book.publisher}/>
         ))}
+=======
+      <h1>Personal Bookshelf</h1>
+      <h2 
+         className={styles.library}
+         onClick={() => setShowFavorites((prev) => !prev)}
+      >
+         Your Favorite Books
+         <span>{showFavorites ? "▼" : "▶"}</span>
+      </h2>
+      {showFavorites && (
+        <div
+          className={styles["favorites-container"]} >
+          {favorites.length === 0 && <p>No favorites yet.</p>}
+          {favorites.map((book) => (
+            <BookCard
+              key={book.id}
+              {...book}
+            />
+          ))}
         </div>
+      )}
+
+      <h2
+        onClick={() => setShowReadingList((prev) => !prev)}
+        className={styles.library}
+      >
+        Your Reading List
+        <span>{showReadingList ? "▼" : "▶"}</span> 
+      </h2>
+      {showReadingList && (
+        <div
+           className={styles["reading-list-container"]}>
+          {readingList.length === 0 && <p>No reading list yet.</p>}
+          {readingList.map((book) => (
+            <BookCard
+              key={book.id}
+              {...book}
+            />
+          ))}
+>>>>>>> d32d9eac2e547a3c92649ba15a571621e24f6ef3
+        </div>
+      )}
     </div>
   );
 }
