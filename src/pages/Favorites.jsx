@@ -1,4 +1,3 @@
-// src/pages/Favorites.jsx
 import React from 'react';
 
 const Favorites = () => {
