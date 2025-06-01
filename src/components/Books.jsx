@@ -12,7 +12,7 @@ function Books() {
 
       try {
         const response = await fetch(
-          `https://www.googleapis.com/books/v1/volumes?q=react&key=AIzaSyCZEf1vbCqGhX9n7sNtNdiZwBS3ZoMddVU&maxResults=7`
+          `https://www.googleapis.com/books/v1/volumes?q=react&maxResults=7`
         );
   
         if (!response.ok) {
@@ -38,7 +38,7 @@ function Books() {
     event.preventDefault();
     try {
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyCZEf1vbCqGhX9n7sNtNdiZwBS3ZoMddVU&maxResults=40`
+        `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=40`
       );
 
       if (!response.ok) {

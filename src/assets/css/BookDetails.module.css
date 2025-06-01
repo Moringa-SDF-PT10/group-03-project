@@ -1,0 +1,35 @@
+.book-details-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    padding: 30px; 
+}
+
+.book-details-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.book-info {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.book-image {
+    max-height: 300px;
+    border-radius: 8px;
+}
+
+.description {
+    text-indent: 2rem;
+    line-height: 1.6;
+}

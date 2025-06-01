@@ -61,6 +61,11 @@
     border: none;
     background: #d2b48c44;
     text-shadow: 0 0 5px white;
+    transition: transform 0.3s
+}
+
+.search button:hover {
+    transform: scale(1.1);
 }
 
 .books {

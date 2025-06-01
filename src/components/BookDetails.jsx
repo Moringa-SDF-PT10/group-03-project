@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import styles from "../assets/css/BookDetails.module.css"; 
+import styles from "../assets/css/BookDetails.module.css";
 
 function BookDetails() {
   const { id } = useParams();
@@ -21,34 +21,57 @@ function BookDetails() {
     fetchBook();
   }, [id]);
 
+  const removeHtmlTags = (html = "") => {
+    const temp = document.createElement("div");
+    temp.innerHTML = html;
+    const paragraphs = temp.querySelectorAll("p");
+    if (paragraphs.length > 0) {
+      return Array.from(paragraphs).map((paragraph) =>
+        paragraph.textContent.trim()
+      );
+    }
+    return [temp.textContent.trim()];
+  };
+
   if (!book) return <p>Loading...</p>;
 
   return (
-  <div className={styles["book-details-container"]}>
-    <h1>Book Details</h1>
-    <div className={styles["book-details-content"]}>
-      {book.imageLinks?.thumbnail && (
-        <img
-          className={styles["book-image"]}
-          src={book.imageLinks.thumbnail}
-          alt={book.title}
-        />
-      )}
-      <div className={styles["book-info"]}>
-        <h2>{book.title}</h2>
-        <h4>{book.subtitle}</h4>
-        <p><strong>Authors:</strong> {book.authors?.join(", ")}</p>
-        <p><strong>Publisher:</strong> {book.publisher}</p>
-        <p><strong>Published Date:</strong> {book.publishedDate}</p>
-        <p><strong>Category:</strong> {book.categories ? book.categories.join(", ") : "Unknown"}</p>
-        <p><strong>Language:</strong> {book.language ? book.language.toUpperCase() : "Unknown"}</p>
-        <p><strong>Average Rating:</strong> {book.averageRating ? `${book.averageRating} / 5` : "No rating"}</p>
-        <p><strong>Description:</strong> {book.description || "No description"}</p>
+    <div className={styles["book-details-container"]}>
+      <div className={styles["book-details-content"]}>
+        <div className={styles["book-info"]}>
+          {book.imageLinks?.thumbnail && (
+            <img
+              className={styles["book-image"]}
+              src={book.imageLinks.thumbnail}
+              alt={book.title}
+            />
+          )}
+          <div>
+            <h2>{book.title}</h2>
+            <h4>{book.subtitle}</h4>
+            <p>
+              <strong>Author(s): </strong> {book.authors?.join(", ")}
+            </p>
+            <p>
+              <strong>Publisher: </strong> {book.publisher}
+            </p>
+            <p>
+              <strong>Published Date: </strong> {book.publishedDate || "N/A"}
+            </p>
+            <p>
+              <strong>Average Rating: </strong>
+              {book.averageRating ? `${book.averageRating} / 5` : "No rating"}
+            </p>
+          </div>
+        </div>
+        <div className={styles.description}>
+          {removeHtmlTags(book.description).map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          )) || "No description"}
+        </div>
       </div>
     </div>
-  </div>
-);
-
+  );
 }
 
 export default BookDetails;
