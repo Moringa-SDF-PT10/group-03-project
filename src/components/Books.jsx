@@ -8,26 +8,27 @@ function Books() {
    const { search, setSearch, booksData, setBooksData } = useLibrary();
 
   useEffect(  () => {
-    const fetcher = async() => {
-
-      try {
-        const response = await fetch(
-          `https://www.googleapis.com/books/v1/volumes?q=react&maxResults=7`
-        );
-  
-        if (!response.ok) {
-          throw new Error(`HTTP error. Status: ${response.status}`);
+    if (booksData.length === 0) {
+      const fetcher = async() => {      
+        try {
+          const response = await fetch(
+            `https://www.googleapis.com/books/v1/volumes?q=react&maxResults=8`
+          );
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error. Status: ${response.status}`);
+          }
+    
+          const data = await response.json();
+          setBooksData(data.items);
+          //console.log(data.items);
+        } catch (error) {
+          console.error(`Fetch error: ${error}`);
         }
-  
-        const data = await response.json();
-        setBooksData(data.items);
-        console.log(data.items);
-      } catch (error) {
-        console.error(`Fetch error: ${error}`);
       }
+      fetcher();
     }
-    fetcher();
-  }, []
+    }, [booksData, setBooksData]
   )
 
   const handleChange = (event) => {
