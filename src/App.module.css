@@ -6,48 +6,7 @@
   font-family: 'Inter', Arial, sans-serif;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 2rem;
-  background: linear-gradient(90deg, #4f8cff 0%, #6dd5ed 100%);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
 
-.logo h1 {
-  font-size: 2rem;
-  color: #fff;
-  margin: 0;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-.logo span {
-  color: #ffe066;
-  font-weight: bold;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.1rem;
-  transition: color 0.2s, background 0.2s;
-  padding: 0.3rem 0.9rem;
-  border-radius: 4px;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  background: rgba(255,255,255,0.15);
-  color: #ffe066;
-}
 
 .main-content {
   flex: 1;
