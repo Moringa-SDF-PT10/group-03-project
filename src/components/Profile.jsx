@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import ProfileNavbar from "./ProfileNavbar";
+import styles from '../assets/css/Profile.module.css'
 
 const Profile = () => {
   const { user, updateUser, updatePassword, logout, deleteAccount } = useAuth();
@@ -73,12 +74,12 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-container">
+    <div className={styles['profile-container']}>
       {/* Sidebar Navigation */}
       <ProfileNavbar/>
-      <div className="profile-sidebar">
-        <div className="user-card">
-          <div className="avatar-upload">
+      <div className={styles["profile-sidebar"]}>
+        <div className={styles["user-card"]}>
+          <div className={styles["avatar-upload"]}>
             <img
               src={imagePreview || "/default-avatar.png"}
               alt="Profile"
