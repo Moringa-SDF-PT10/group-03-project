@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from './AuthContext'
 import LoginForm from './LoginForm'
@@ -12,7 +12,7 @@ const Login = () => {
 
   const handleLogin = (email, password) => {
     if (login(email, password)) {
-      navigate('/profile')
+      navigate('/books')
     } else {
       setError('Invalid email or password')
     }

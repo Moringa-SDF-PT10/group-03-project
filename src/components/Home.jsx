@@ -64,7 +64,7 @@ function Home() {
 
             <div className={styles['home-header-container']}>
                 <div className={styles['home-header']}>
-                    <h1>Welcome to BookWorm<span>03</span></h1>
+                    <h1>Welcome to Last Chapter</h1>
                     <p>Your one-stop destination for all things books!</p>
                     <p>Explore our collection, manage your library, and connect with fellow book lovers.</p>
                 </div>
@@ -77,7 +77,7 @@ function Home() {
                 <div className={styles['home-image-container2']}>
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=80" alt="Library" className='home-image' />
                 </div>
-                <h2>About BookWorm03</h2>
+                <h2>About Last Chapter</h2>
                 <ul>
                     <li>Extensive book collection</li>
                     <li>User-friendly library management</li>

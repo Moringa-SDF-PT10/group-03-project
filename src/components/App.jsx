@@ -1,44 +1,47 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from './Home.jsx';
-import Books from './Books.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { LibraryProvider } from './LibraryContext'; 
+import { AuthProvider } from './AuthContext';      
+import ProtectedRoute from './ProtectedRoute';    
+import Home from './Home';
 import Login from './Login';
-import styles from '../assets/css/App.module.css';
 import Signup from './Signup';
-import Profile from './Profile.jsx';
-import BookDetail from './BookDetail.jsx';
-import MyLibrary from './MyLibrary.jsx';
-import Favorites from './Favorites.jsx';
-import ReadingList from './ReadingList.jsx';
-import ProtectedRoute from './ProtectedRoute.jsx';
+import Profile from './Profile';
+import Books from './Books';
+import BookDetails from './BookDetails';
+import Favorites from './Favorites';
+import ReadingList from './ReadingList';
+import styles from '../assets/css/App.module.css';
 
-
-function App() {
-
+const App = () => {
   return (
-    <div className={styles['app-container']}>
-      <main className={styles['main-content']}>
-        <Routes>
-          //Public Routes
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+    <AuthProvider>         
+      <LibraryProvider>
+        <Router>
+          <div className={styles['app-container']}>
+            <main className={styles['main-content']}>
+              <Routes>                
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/books" element={<Books />} />
+                  <Route path="/book/:id" element={<BookDetails />} />
+                  <Route path="/favorites" element={<Favorites />} />
+                  <Route path="/reading-list" element={<ReadingList />} />
+                </Route>
+              </Routes>
+            </main>
+            <footer>
+              <p>© 2025 Last Chapter. All rights reserved.</p>
+              <p>Made with ❤️ by Last Chapter Team</p>
+            </footer>
+          </div>
+        </Router>
+      </LibraryProvider>
+    </AuthProvider>
+  );
+};
 
-          <Route element={<ProtectedRoute />}>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/books" element={<Books />} />
-            <Route path="/book/:id" element={<BookDetail />} />
-            <Route path="/my-library" element={<MyLibrary />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/reading-list" element={<ReadingList />} />
-        </Route>
-      </Routes>
-      </main>
-      <footer>
-        <p>© 2025 BookWorm<span>03</span>. All rights reserved.</p>
-        <p>Made with ❤️ by BookWorm03 Team</p>
-      </footer>
-    </div>
-  )
-}
-
-export default App
+export default App;

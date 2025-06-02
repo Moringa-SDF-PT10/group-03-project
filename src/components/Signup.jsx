@@ -73,7 +73,7 @@ const Signup = () => {
       );
 
       if (success) {
-        navigate("/profile");
+        navigate("/books");
       } else {
         setErrors({
           ...errors,
