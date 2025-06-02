@@ -1,6 +1,7 @@
 import { useLibrary } from "./LibraryContext";
 import BookCard from "./BookCard";
 import HomeNavbar from "./HomeNavbar";
+import styles from "../assets/css/ReadingList.module.css";
 
 function ReadingListPage() {
   const { readingList } = useLibrary();
