@@ -1,83 +1,82 @@
 .book-list {
-    position: relative;
-    min-height: 100vh;
-    width: 100%;
-    background-color: #6F4E37;
-    padding-bottom: 40px;
-    overflow-x: hidden;
-    margin: 0;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f1e3cf;
+  padding-bottom: 40px;
+  overflow-x: hidden;
+  margin: 0 auto;
 }
 
 .background {
-    background-image: url('src/assets/images/books-background.jpeg');
-    background-size: cover;
-    height: 80vh;
-    width: 100%;
-    opacity: 0.4;
-    border-bottom: 3px solid black;
+  background-image: url("src/assets/images/books-background.jpeg");
+  background-size: cover;
+  height: 80vh;
+  width: 100%;
+  opacity: 0.6;
+  border-bottom: 3px solid black;
 }
 
 .search {
-    position: absolute;
-    top: 40vh;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 0 1rem;
+  position: absolute;
+  top: 40vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 1rem;
 }
 
 .search input {
-    width: 100%;
-    max-width: 400px;
-    height: 30px;
-    text-align: center;
-    color: #1a120de0;
-    text-shadow: 0 0 5px white;
-    border: none;
-    border-bottom: 2px solid black;
-    background: none;
-    font-size: 18px;
+  width: 100%;
+  max-width: 400px;
+  height: 30px;
+  text-align: center;
+  color: #1a120de0;
+  text-shadow: 0 0 5px white;
+  border: none;
+  border-bottom: 2px solid black;
+  background: none;
+  font-size: 18px;
 }
 
 .search input:focus {
-    outline: none;
+  outline: none;
 }
 
 .search input::placeholder {
-    color: black;
-    opacity: 0.8;
-    text-shadow: 0 0 5px white;
+  color: black;
+  opacity: 0.8;
+  text-shadow: 0 0 5px white;
 }
 
 .search button {
-    border-radius: 8px;
-    height: 30px;
-    width: 100%;
-    max-width: 300px;
-    border: none;
-    background: #d2b48c44;
-    text-shadow: 0 0 5px white;
-    transition: 0.3s
+  border-radius: 8px;
+  height: 30px;
+  width: 100%;
+  max-width: 300px;
+  border: none;
+  background: #d2b48c44;
+  text-shadow: 0 0 5px white;
+  transition: 0.3s;
 }
 
 .search button:hover {
-    background-color: #d2b48c85;
+  background-color: #d2b48c85;
 }
 
 .books {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-    max-width: 100%;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2.5rem 1rem;
+  max-width: 100%;
+  margin: 0 auto;
 }
-
