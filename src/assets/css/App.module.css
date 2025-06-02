@@ -1,5 +1,9 @@
 .app-container {
+  margin: 0;
+  padding: 0;
+  position: relative;
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background: #f7f9fb;
@@ -14,14 +18,15 @@
   max-width: 900px;
   margin: 0 auto;
   width: 100%;
+  flex: 1;
 }
 
 footer {
-  background: #222;
-  color: #fff;
+  background: #a5875fc4;
+  color: #4e3a1f;
   text-align: center;
-  padding: 1.2rem 0 1rem 0;
-  font-size: 1rem;
+  padding: 0.8rem 0 0.6rem 0;
+  font-size: 0.76rem;
   letter-spacing: 0.5px;
 }
 

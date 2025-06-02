@@ -39,8 +39,8 @@ const App = () => {
               </Routes>
             </main>
             <footer>
-              <p>© 2025 BookWorm<span>03</span>. All rights reserved.</p>
-              <p>Made with ❤️ by BookWorm03 Team</p>
+              <p>© 2025 Last Chapter. All rights reserved.</p>
+              <p>Made with ❤️ by Last Chapter Team</p>
             </footer>
           </div>
         </Router>

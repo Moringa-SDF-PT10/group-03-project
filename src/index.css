@@ -2,6 +2,8 @@ body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 * {
@@ -14,18 +16,21 @@ body, html {
 
 h2, h4, p {
     margin-top: 0;
-}/* Auth Page Styles */
+}
+
+/* Auth Page Styles */
 .auth-page {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f7fa;
+  background-color: #6f4e37;
   padding: 2rem;
 }
 
 .auth-container {
-  background: white;
+  background: #D2B48C;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 2.5rem;
@@ -68,6 +73,7 @@ h2, h4, p {
   border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.2s;
+  color: #5a4536;
 }
 
 .form-input:focus {
@@ -83,14 +89,14 @@ h2, h4, p {
 .error-message {
   display: block;
   margin-top: 0.25rem;
-  color: #f56565;
+  color: #994545;
   font-size: 0.875rem;
 }
 
 .auth-button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #4299e1;
+  background-color: #835f46;
   color: white;
   border: none;
   border-radius: 6px;
@@ -102,7 +108,7 @@ h2, h4, p {
 }
 
 .auth-button:hover {
-  background-color: #3182ce;
+  background-color: #6f4e37;
 }
 
 .auth-button:disabled {
@@ -135,4 +141,12 @@ h2, h4, p {
   .auth-page h1 {
     font-size: 1.5rem;
   }
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+* {
+  outline: 1px solid red;
 }

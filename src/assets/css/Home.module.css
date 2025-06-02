@@ -1,12 +1,13 @@
 .home-container {
-  max-width: 1100px;
+  flex: 1;
+  width: 100%;
   margin: 0 auto;
   padding: 2.5rem 1rem;
-  background: #f7f9fb;
-  min-height: 80vh;
+  background: #f1e3cf;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  text-align: center;
 }
 
 .home-header-container {
@@ -14,7 +15,8 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 2rem;
-  background: #fff;
+  flex-direction: column;
+  background: #D2B48C;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(79,140,255,0.08);
   padding: 2rem 1.5rem;
@@ -28,13 +30,9 @@
 .home-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2d3a4b;
+  color: #534b4b;
   margin-bottom: 0.5rem;
   letter-spacing: 1px;
-}
-
-.home-header span {
-  color: #4f8cff;
 }
 
 .home-header p {
@@ -46,12 +44,12 @@
 .home-image-container1 {
   flex: 1;
   min-width: 200px;
-  max-width: 350px;
+  width: 100%;
   margin: 0 auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(79,140,255,0.08);
-  background: #f2f6fa;
+  background: #D2B48C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +68,7 @@
 }
 
 .search-section {
-  background: #fff;
+  background: #D2B48C;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(79,140,255,0.08);
   padding: 2rem 1.5rem;
@@ -86,7 +84,7 @@
 .search-input {
   flex: 1;
   padding: 0.6rem 1rem;
-  border: 1.5px solid #4f8cff;
+  border: 1.5px solid #74513b;
   border-radius: 8px;
   font-size: 1rem;
   background: #f7f9fb;
@@ -94,7 +92,7 @@
 
 .search-btn {
   padding: 0.6rem 1.2rem;
-  background: #4f8cff;
+  background: #835f46;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -104,7 +102,7 @@
 }
 
 .search-btn:hover {
-  background: #357ae8;
+  background: #74513b;
 }
 
 .book-results {
@@ -128,7 +126,7 @@
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 2rem;
-  background: #fff;
+  background: #D2B48C;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(79,140,255,0.08);
   padding: 2rem 1.5rem;
@@ -137,12 +135,12 @@
 .home-image-container2 {
   flex: 1;
   min-width: 200px;
-  max-width: 350px;
+  width: 100%;
   margin: 0 auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(79,140,255,0.08);
-  background: #f2f6fa;
+  background: #D2B48C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,7 +162,7 @@
 }
 
 .features-section {
-  background: #fff;
+  background: #D2B48C;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(79,140,255,0.08);
   padding: 2rem 1.5rem;
@@ -192,7 +190,7 @@ li {
 
 li::before {
   content: "✓";
-  color: #4f8cff;
+  color: #745c3c;
   font-size: 1.2rem;
   margin-right: 0.6rem;
   vertical-align: middle;

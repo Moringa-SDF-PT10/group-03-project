@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLibrary } from "./LibraryContext";
 import BookCard from "./BookCard";
 import styles from "../assets/css/MyLibrary.module.css";
+import ProfileNavbar from "./ProfileNavbar";
+import HomeNavbar from "./HomeNavbar";
 
 function MyLibrary() {
   const { favorites, readingList } = useLibrary();
@@ -11,6 +13,7 @@ function MyLibrary() {
 
   return (
     <div>
+      <HomeNavbar />
       <h1>Personal Bookshelf</h1>
       <h2
         className={styles.library}
