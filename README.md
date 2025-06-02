@@ -82,4 +82,8 @@ You can experience the app by clicking [here](https://next-chapter-books.netlify
 
 Created by Group 3 for Moringa School SDF-PT10, End of Phase 2 Project.
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
 ---
