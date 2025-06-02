@@ -80,16 +80,16 @@ function Home() {
                 <h2>About Last Chapter</h2>
                 <ul>
                     <li>Extensive book collection</li>
-                    <li>User-friendly library management</li>
+                    <li>User-friendly interface</li>
                 </ul>
             </div>
             <div className={styles['features-section']}>
                 <h2>Features</h2>
                 <ul>
-                    <li>Search and filter books</li>
-                    <li>Bookmark your favorite books</li>
-                    <li>Create and manage reading lists</li>
-                    <li>Preview millions of books from all genres</li>
+                    <li>Search for books by title, author, or keyword</li>
+                    <li>View book details and cover images</li>
+                    <li>Add or remove books from your favourites</li>
+                    <li>Create and manage a personal reading list</li>
                 </ul>
             </div>
         </div>
