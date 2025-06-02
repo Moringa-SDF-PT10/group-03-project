@@ -40,9 +40,36 @@ Last Chapter is a React-based web application for book lovers. It allows users t
 
 4. **Open your browser:**
    Visit [http://localhost:5173](http://localhost:5173)
+
+
+## Screenshots
+
+- The Home page.
+
+![home page for Last Chapter](src/assets/images/home.png)
+
+- The login page, which allows you to interact with the books.
+
+![Login page for Last Chapter](src/assets/images/login.png)
+
+- The Books page, where you can search for and interact with millions of books availed by Google Books API.
+
+![Books page for Last Chapter](src/assets/images/books.png)
+
+- The Favourites page, where you can see all the books that you love.
+
+![Favourites page for Last Chapter](src/assets/images/favourite.png)
+
+- The Reading List page, where you can see books that you'd love to read.
+
+![Reading List page for Last Chapter](src/assets/images/reading-list.png)
+
+- The Profile page, where you can manage your account.
+
+![Profile page for Last Chapter](src/assets/images/profile-page.png)
    
 ## Credits
 
-Created by Group 3 for Moringa School SDF-PT10, Phase 2.
+Created by Group 3 for Moringa School SDF-PT10, End of Phase 2 Project.
 
 ---
