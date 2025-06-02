@@ -1,7 +1,7 @@
 import  { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-import ProfileNavbar from "./ProfileNavbar";
+import HomeNavbar from "./HomeNavbar";
 import styles from '../assets/css/Profile.module.css'
 import { Image, Pencil } from 'lucide-react'
 
@@ -77,7 +77,7 @@ const Profile = () => {
   return (
     <div className={styles['profile-container']}>
       {/* Sidebar Navigation */}
-      <ProfileNavbar/>
+      <HomeNavbar/>
       <div className={styles["profile-sidebar"]}>
         <div className={styles["user-card"]}>
           <div className={styles["avatar-upload"]}>

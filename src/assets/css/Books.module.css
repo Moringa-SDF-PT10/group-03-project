@@ -63,13 +63,13 @@
   width: 100%;
   max-width: 300px;
   border: none;
-  background: #d2b48c44;
+  background: #795942a2;
   text-shadow: 0 0 5px white;
   transition: 0.3s;
 }
 
 .search button:hover {
-  background-color: #d2b48c85;
+  background: #795942c9;
 }
 
 .books {
@@ -79,15 +79,4 @@
   padding: 2.5rem 1rem;
   max-width: 100%;
   margin: 0 auto;
-}
-
-@media (max-width: 800px) {
-  .book-list,
-  .books {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
 }
