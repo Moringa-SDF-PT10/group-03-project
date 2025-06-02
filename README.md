@@ -4,6 +4,8 @@
 
 Last Chapter is a React-based web application for book lovers. It allows users to search for books, manage favorites, create reading lists, and explore a wide collection using the Google Books API.
 
+You can experience the app by clicking [here](https://next-chapter-books.netlify.app/).
+
 ## Features
 
 - Search for books by title, author, or keyword
