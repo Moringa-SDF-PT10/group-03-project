@@ -7,11 +7,15 @@ function FavoritesPage() {
   const { favorites } = useLibrary();
 
   return (
-    <div>
+    <>
       <HomeNavbar />
-      <div className={styles['favourites-container']}>
+      <div className={styles["favourites-container"]}>
         <h1 className={styles.title}>Your Favorite Books</h1>
-        <div className={favorites.length === 0 ? styles['no-favourites'] : styles.favourites}>
+        <div
+          className={
+            favorites.length === 0 ? styles["no-favourites"] : styles.favourites
+          }
+        >
           {favorites.length === 0 ? (
             <p>No favorites yet.</p>
           ) : (
@@ -19,7 +23,7 @@ function FavoritesPage() {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

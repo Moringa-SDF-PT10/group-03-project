@@ -17,6 +17,7 @@
   padding: 0;
   flex: 1;
   width: 100%;
+  box-sizing: border-box;
 }
 
 footer {
@@ -30,15 +31,6 @@ footer {
 
 footer span {
   color: #ffe066;
-}
-
-@media (max-width: 800px) {
-  .main-content {
-    padding: 1.2rem 0.5rem;
-  }
-  .navbar {
-    padding: 1rem 1rem;
-  }
 }
 
 @media (max-width: 600px) {
