@@ -14,10 +14,11 @@ function HomeNavbar() {
       </div>
       <div className={styles["nav-links"]}>
         <Link to='/'>Home</Link>
-        <Link to='/books'>Books</Link>
         <Link to='/login'>Login</Link>
+        <Link to='/books'>Books</Link> 
+        <Link to='/favorites'>Favorite Books</Link>
+        <Link to='/reading-list'>Reading List</Link>
         <Link to='/profile'>Profile</Link>
-        <Link to='/my-library'>My Library</Link>
       </div>
     </nav>
   );

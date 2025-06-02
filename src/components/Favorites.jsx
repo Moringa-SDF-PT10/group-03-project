@@ -1,8 +1,24 @@
-// src/pages/Favorites.jsx
-import React from 'react';
+import { useLibrary } from "./LibraryContext";
+import BookCard from "./BookCard";
+import HomeNavbar from "./HomeNavbar";
+import styles from "../assets/css/MyLibrary.module.css";
 
-const Favorites = () => {
-  return <h1>Favorite Books</h1>;
-};
+function FavoritesPage() {
+  const { favorites } = useLibrary();
 
-export default Favorites;
+  return (
+    <div>
+      <HomeNavbar />
+      <h1>Your Favorite Books</h1>
+      <div className={styles["favorites-container"]}>
+        {favorites.length === 0 ? (
+          <p>No favorites yet.</p>
+        ) : (
+          favorites.map((book) => <BookCard key={book.id} {...book} />)
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default FavoritesPage;

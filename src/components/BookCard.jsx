@@ -1,7 +1,7 @@
 import styles from "../assets/css/BookCard.module.css";
 import { Star, NotebookPen } from "lucide-react";
 import { useLibrary } from "./LibraryContext";
-import { Link } from "react-router-dom"; // <-- added import
+import { Link } from "react-router-dom"; 
 
 function BookCard({
   id,
@@ -34,7 +34,7 @@ function BookCard({
     <div className={styles["book-card"]}>
       <Link
         to={`/book/${id}`}
-        style={{ textDecoration: "none", color: "inherit" }} // <-- link styles
+        style={{ textDecoration: "none", color: "inherit" }}  // are we using this css??
       >
         <div>
           <img src={image} alt={title} />
