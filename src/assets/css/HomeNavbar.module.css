@@ -2,6 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  height: 70px;
   width: 100vw;
   display: flex;
   justify-content: space-between;
@@ -27,6 +28,7 @@
 .nav-links {
   display: flex;
   gap: 1.5rem;
+  font-size: 13px;
 }
 
 .nav-links a {

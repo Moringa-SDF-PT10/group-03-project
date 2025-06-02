@@ -83,7 +83,7 @@ const Profile = () => {
             <img
               src={imagePreview || "/default-avatar.png"}
               alt="Profile"
-              className="profile-avatar"
+              className={styles["profile-avatar"]}
             />
             <label className="avatar-edit">
               📷
@@ -99,28 +99,28 @@ const Profile = () => {
           <p>{user?.email || "user@example.com"}</p>
         </div>
 
-        <nav className="profile-nav">
+        <nav className={styles["profile-nav"]}>
           <button
-            className={`nav-item ${
+            className={styles[`nav-item ${
               activeSection === "profile" ? "active" : ""
-            }`}
+            }`]}
             onClick={() => setActiveSection("profile")}
           >
             👤 Profile Settings
           </button>
           <button
-            className={`nav-item ${
+            className={styles[`nav-item ${
               activeSection === "password" ? "active" : ""
-            }`}
+            }`]}
             onClick={() => setActiveSection("password")}
           >
             🔒 Change Password
           </button>
-          <button className="nav-item logout" onClick={logout}>
+          <button className={styles["nav-item logout"]} onClick={logout}>
             🚪 Log Out
           </button>
           <button
-            className="nav-item danger"
+            className={styles["nav-item danger"]}
             onClick={() => setShowDeleteModal(true)}
           >
             🗑️ Delete Account

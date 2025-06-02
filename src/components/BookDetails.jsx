@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "../assets/css/BookDetails.module.css";
+import HomeNavbar from "./HomeNavbar";
 
 function BookDetails() {
   const { id } = useParams();
@@ -37,6 +38,7 @@ function BookDetails() {
 
   return (
     <div className={styles["book-details-container"]}>
+      <HomeNavbar />
       <div className={styles["title-container"]}>
         <span className={styles.title}>{book.title}{book.subtitle && <span>:</span>}</span>
         {book.subtitle && (

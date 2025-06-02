@@ -7,15 +7,17 @@ function ReadingListPage() {
   const { readingList } = useLibrary();
 
   return (
-    <div>
+    <div className={styles["reading-list-container"]}>
       <HomeNavbar />
-      <h1>Your Reading List</h1>
-      <div className={styles["reading-list-container"]}>
-        {readingList.length === 0 ? (
-          <p>No reading list yet.</p>
-        ) : (
-          readingList.map((book) => <BookCard key={book.id} {...book} />)
-        )}
+      <div>
+        <h1>Your Reading List</h1>
+        <div className={styles['reading-list']}>
+          {readingList.length === 0 ? (
+            <p>No reading list yet.</p>
+          ) : (
+            readingList.map((book) => <BookCard key={book.id} {...book} />)
+          )}
+        </div>
       </div>
     </div>
   );
