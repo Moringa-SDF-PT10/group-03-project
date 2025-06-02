@@ -146,7 +146,3 @@ h2, h4, p {
 button:hover {
   cursor: pointer;
 }
-
-* {
-  outline: 1px solid red;
-}

@@ -22,6 +22,8 @@
 
 .book-card img {
     border-radius: 8px;
+    width: 100%;
+    height: auto;
     max-height: 300px;
     object-fit: contain;
 }
@@ -33,7 +35,6 @@
 .info {
     display: flex;
     width: 100%;
-    max-width: 260px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
