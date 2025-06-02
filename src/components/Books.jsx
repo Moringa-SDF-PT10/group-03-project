@@ -79,6 +79,7 @@ function Books() {
           let authors = book.volumeInfo && book.volumeInfo.authors;
           let year = book.volumeInfo && book.volumeInfo.publishedDate;
           let publisher = book.volumeInfo && book.volumeInfo.publisher;
+         
           // let description = book.volumeInfo && book.volumeInfo.description;
           if (thumbnail != undefined)
             return (
