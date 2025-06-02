@@ -81,19 +81,15 @@ function Home() {
                 <ul>
                     <li>Extensive book collection</li>
                     <li>User-friendly library management</li>
-                    <li>Community features to connect with other readers</li>
-                    <li>Personalized recommendations</li>
                 </ul>
             </div>
             <div className={styles['features-section']}>
                 <h2>Features</h2>
                 <ul>
                     <li>Search and filter books</li>
-                    <li>Track your reading progress</li>
                     <li>Bookmark your favorite books</li>
                     <li>Create and manage reading lists</li>
-                    <li>Rate and review books</li>
-                    <li>Access to exclusive content and events</li>
+                    <li>Preview millions of books from all genres</li>
                 </ul>
             </div>
         </div>

@@ -5,7 +5,7 @@
   background-color: #f1e3cf;
   padding-bottom: 40px;
   overflow-x: hidden;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .background {
@@ -63,13 +63,13 @@
   width: 100%;
   max-width: 300px;
   border: none;
-  background: #d2b48c44;
+  background: #795942a2;
   text-shadow: 0 0 5px white;
   transition: 0.3s;
 }
 
 .search button:hover {
-  background-color: #d2b48c85;
+  background: #795942c9;
 }
 
 .books {

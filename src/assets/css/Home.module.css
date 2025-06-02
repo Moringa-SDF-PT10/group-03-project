@@ -92,7 +92,7 @@
 
 .search-btn {
   padding: 0.6rem 1.2rem;
-  background: #835f46;
+  background: #795942;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -102,7 +102,7 @@
 }
 
 .search-btn:hover {
-  background: #74513b;
+  background: #634835;
 }
 
 .book-results {
@@ -239,5 +239,15 @@ li::before {
   }
   ul {
     font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .home-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }

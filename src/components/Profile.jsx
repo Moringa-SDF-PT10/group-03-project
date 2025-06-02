@@ -1,7 +1,9 @@
 import  { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-import ProfileNavbar from "./ProfileNavbar";
+import HomeNavbar from "./HomeNavbar";
+import styles from '../assets/css/Profile.module.css'
+import { Image, Pencil } from 'lucide-react'
 
 const Profile = () => {
   const { user, updateUser, updatePassword, logout, deleteAccount } = useAuth();
@@ -73,19 +75,15 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-container">
+    <div className={styles['profile-container']}>
       {/* Sidebar Navigation */}
-      <ProfileNavbar/>
-      <div className="profile-sidebar">
-        <div className="user-card">
-          <div className="avatar-upload">
-            <img
-              src={imagePreview || "/default-avatar.png"}
-              alt="Profile"
-              className="profile-avatar"
-            />
+      <HomeNavbar/>
+      <div className={styles["profile-sidebar"]}>
+        <div className={styles["user-card"]}>
+          <div className={styles["avatar-upload"]}>
+            <Image strokeWidth={0.7} size={100} />
             <label className="avatar-edit">
-              📷
+              <Pencil />
               <input
                 type="file"
                 accept="image/*"
@@ -98,28 +96,28 @@ const Profile = () => {
           <p>{user?.email || "user@example.com"}</p>
         </div>
 
-        <nav className="profile-nav">
+        <nav className={styles["profile-nav"]}>
           <button
-            className={`nav-item ${
+            className={styles[`nav-item ${
               activeSection === "profile" ? "active" : ""
-            }`}
+            }`]}
             onClick={() => setActiveSection("profile")}
           >
             👤 Profile Settings
           </button>
           <button
-            className={`nav-item ${
+            className={styles[`nav-item ${
               activeSection === "password" ? "active" : ""
-            }`}
+            }`]}
             onClick={() => setActiveSection("password")}
           >
             🔒 Change Password
           </button>
-          <button className="nav-item logout" onClick={logout}>
+          <button className={styles["nav-item logout"]} onClick={logout}>
             🚪 Log Out
           </button>
           <button
-            className="nav-item danger"
+            className={styles["nav-item danger"]}
             onClick={() => setShowDeleteModal(true)}
           >
             🗑️ Delete Account
