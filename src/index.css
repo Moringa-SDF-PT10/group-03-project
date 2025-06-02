@@ -143,6 +143,11 @@ h2, h4, p {
   }
 }
 
-button:hover {
+button {
   cursor: pointer;
 }
+
+/* * {
+  background-color: rgba(255, 0, 0, 0.1); /* highlight all elements */
+  /* outline: 1px solid red;                show box boundaries */
+/* } */ 

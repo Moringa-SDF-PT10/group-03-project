@@ -241,3 +241,13 @@ li::before {
     font-size: 0.98rem;
   }
 }
+
+@media (max-width: 800px) {
+  .home-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

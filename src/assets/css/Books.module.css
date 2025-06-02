@@ -80,3 +80,14 @@
   max-width: 100%;
   margin: 0 auto;
 }
+
+@media (max-width: 800px) {
+  .book-list,
+  .books {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
