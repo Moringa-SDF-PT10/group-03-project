@@ -48,9 +48,13 @@ Last Chapter is a React-based web application for book lovers. It allows users t
 
 ![home page for Last Chapter](src/assets/images/home.png)
 
-- The login page, which allows you to interact with the books.
+- The login page, which allows you to log into your accountl
 
 ![Login page for Last Chapter](src/assets/images/login.png)
+
+- The Create Account page, which allows you to create an account if you don't have one.
+
+![Create Account page for Last Chapter](src/assets/images/create-account.png)
 
 - The Books page, where you can search for and interact with millions of books availed by Google Books API.
 
@@ -63,6 +67,10 @@ Last Chapter is a React-based web application for book lovers. It allows users t
 - The Reading List page, where you can see books that you'd love to read.
 
 ![Reading List page for Last Chapter](src/assets/images/reading-list.png)
+
+- The Book Details page, which shows you some information about a book.
+
+![Book Details page for Last Chapter](src/assets/images/book-detail.png)
 
 - The Profile page, where you can manage your account.
 
